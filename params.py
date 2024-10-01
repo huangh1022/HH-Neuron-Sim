@@ -7,10 +7,10 @@ V_0 = float(cfg['Voltage']['V_0'])
 V_1 = float(cfg['Voltage']['V_1'])
 
 I_0 = float(cfg['Current']['I_0'])
-I_1 = float(cfg['Current']['I_0'])
+I_1 = float(cfg['Current']['I_1'])
 
 CAP = float(cfg['Circuit Params']['CAP'])
-V_R = float(cfg['Voltage']['V_0'])
+V_R = float(cfg['Circuit Params']['V_R'])
 
 T_TOTAL = int(cfg['Time Params']['T_TOTAL'])
 T_DEF = int(cfg['Time Params']['T_DEF'])
