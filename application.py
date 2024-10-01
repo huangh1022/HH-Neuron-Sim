@@ -1,5 +1,6 @@
 import os
 import sys
+import subprocess
 import tkinter as tk
 import configparser as cp
 import current_clamp
@@ -216,7 +217,8 @@ def run_sim(test_type):
         select_warning()
 
 def restart():
-    os.execl(sys.executable, sys.executable, *sys.argv)
+    subprocess.Popen(sys.executable + ' "' + os.path.realpath(__file__) + '"')
+    exit()
 
 def inter_main():
 
