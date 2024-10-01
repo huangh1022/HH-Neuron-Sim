@@ -1,12 +1,10 @@
-import numpy as np
-import pprint
 import matplotlib.pylab as plt
 
-from config import *
 from kinetics import *
+from params import *
 
-def main():
-    
+def current_clamp():
+
     data_k = {}
     data_na = {}
     data_l = {}
@@ -15,7 +13,8 @@ def main():
     n = N_0
     m = M_0
     h = H_0
-    v = VM_0
+
+    v = V_0
     i = I_0
 
     for j in range(0, T_TOTAL*T_DEF, 1):
@@ -45,8 +44,6 @@ def main():
         v = v + (dv / T_DEF)
 
         data_total[time] = v
-
-        print(v)
 
         data_k[time] = i_k
         data_na[time] = i_na
@@ -82,6 +79,9 @@ def main():
     #plt.legend()
     plt.tight_layout()
     plt.show()
+
+def main():
+    current_clamp()
 
 if __name__ == "__main__":
     main()

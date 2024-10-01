@@ -1,6 +1,6 @@
 import numpy as np
 
-from config import *
+from params import *
 
 # kinetic equations based off of original HH paper
 # V in calculating a and b is assumed to be written as negative driving force, i.e. displacement of voltage 
