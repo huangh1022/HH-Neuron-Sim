@@ -1,3 +1,5 @@
+import os
+import sys
 import tkinter as tk
 import configparser as cp
 import current_clamp
@@ -212,7 +214,10 @@ def run_sim(test_type):
         current_clamp()
     else:
         select_warning()
-        
+
+def restart():
+    os.execl(sys.executable, sys.executable, *sys.argv)
+
 def inter_main():
 
     test_type = "vc"
@@ -240,7 +245,8 @@ def inter_main():
 
     tk.Label(i_main, text = "Edits to parameters require restart to take effect.").pack(pady=20)
 
-    tk.Button(i_main, text = 'Run Simulation', width=25, command = lambda: run_sim(test_type.get())).pack(pady=20)
+    tk.Button(i_main, text = 'Restart', width=25, command = restart).pack()
+    tk.Button(i_main, text = 'Run Simulation', width=25, command = lambda: run_sim(test_type.get())).pack()
 
     i_main.mainloop()
 
