@@ -1,6 +1,8 @@
 # HH-Neuron-Sim
 Simulation of the Hodgkin-Huxley model of current flow and channel openings in axons.
 
+Application.py GUI contains options for editing the parameters of the simulation.
+
 Values timescale, applied voltage and current, HH parameters, etc are located in config.py.
 
 HH parameters for giant squid axon taken from:
