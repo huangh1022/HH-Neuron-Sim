@@ -1,5 +1,14 @@
+import os
+import sys
+import subprocess
 import tkinter as tk
 import configparser as cp
+import current_clamp
+import voltage_clamp
+import importlib
+
+importlib.reload(current_clamp)
+importlib.reload(voltage_clamp)
 
 from voltage_clamp import *
 from current_clamp import *
@@ -199,18 +208,23 @@ def open_hh():
     b2.grid(row=7, column=1)
 
 def run_sim(test_type):
+    
     if test_type == "vc":
         voltage_clamp()
     elif test_type == "cc":
         current_clamp()
     else:
         select_warning()
-        
+
+def restart():
+    subprocess.Popen(sys.executable + ' "' + os.path.realpath(__file__) + '"')
+    exit()
+
 def inter_main():
 
     test_type = "vc"
 
-    i_main.geometry("270x320")
+    i_main.geometry("320x440")
 
     i_main.title("Single Neuron Simulation")
 
@@ -231,7 +245,10 @@ def inter_main():
     b_param.pack()
     b_hh.pack()
 
-    tk.Button(i_main, text = 'Run Simulation', width=25, command = lambda: run_sim(test_type.get())).pack(pady=20)
+    tk.Label(i_main, text = "Edits to parameters require restart to take effect.").pack(pady=20)
+
+    tk.Button(i_main, text = 'Restart', width=25, command = restart).pack()
+    tk.Button(i_main, text = 'Run Simulation', width=25, command = lambda: run_sim(test_type.get())).pack()
 
     i_main.mainloop()
 
