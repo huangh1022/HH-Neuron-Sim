@@ -2,21 +2,20 @@ import numpy as np
 import pprint
 import matplotlib.pylab as plt
 
-from params import *
+from config import *
 from kinetics import *
 
-def voltage_clamp():
+def main():
     
     data_n = {}
     data_m = {}
     data_h = {}
     data_na = {}
     data_total = {}
-
     n = N_0
     m = M_0
     h = H_0
-    v = V_0
+    v = VM_0
 
     for j in range(0, T_TOTAL*T_DEF, 1):
         
@@ -24,8 +23,8 @@ def voltage_clamp():
 
         # driver for voltage clamp
         if time > T_CHANGE and time <= T_REVERT:
-            v = V_1
-        elif time > T_REVERT: v = V_0
+            v = VM_1
+        elif time > T_REVERT: v = VM_0
     
         n = diff_inc(n, "n", v)
         m = diff_inc(m, "m", v)
@@ -82,9 +81,6 @@ def voltage_clamp():
     #plt.legend()
     plt.tight_layout()
     plt.show()
-
-def main():
-    voltage_clamp()
 
 if __name__ == "__main__":
     main()
