@@ -68,6 +68,7 @@ def open_time_config():
             e4['state'] = 'normal'
 
     cb1 = tk.Checkbutton(top, text="Revert?", command = toggle_rev)
+    cb1.select=()
 
     cb1.grid(row=5)
 
