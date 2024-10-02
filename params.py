@@ -21,6 +21,10 @@ N_0 = float(cfg['Conductances']['N_0'])
 M_0 = float(cfg['Conductances']['M_0'])
 H_0 = float(cfg['Conductances']['H_0'])
 
+V_LOWER = int(cfg['Conductances']['V_LOWER'])
+V_UPPER = int(cfg['Conductances']['V_UPPER'])
+V_DEF = int(cfg['Conductances']['V_DEF'])
+
 V_K = float(cfg['HH Params']['V_K'])
 V_NA = float(cfg['HH Params']['V_NA'])
 V_L = float(cfg['HH Params']['V_L'])

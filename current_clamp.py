@@ -1,10 +1,4 @@
 import matplotlib.pylab as plt
-import params
-import kinetics
-import importlib
-
-importlib.reload(params)
-importlib.reload(kinetics)
 
 from kinetics import *
 from params import *

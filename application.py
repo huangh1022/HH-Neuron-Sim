@@ -1,17 +1,14 @@
 import os
 import sys
 import subprocess
-import tkinter as tk
 import configparser as cp
+import tkinter as tk
 import current_clamp
 import voltage_clamp
-import importlib
-
-importlib.reload(current_clamp)
-importlib.reload(voltage_clamp)
 
 from voltage_clamp import *
 from current_clamp import *
+from curves import *
 
 cfg = cp.ConfigParser()
 cfg.read('config.ini')
@@ -224,7 +221,7 @@ def inter_main():
 
     test_type = "vc"
 
-    i_main.geometry("320x440")
+    i_main.geometry("320x540")
 
     i_main.title("Single Neuron Simulation")
 
@@ -235,11 +232,11 @@ def inter_main():
     tk.Radiobutton(i_main, text="Voltage Clamp", variable= test_type, value = 'vc', indicator = 0).pack(anchor='center')
     tk.Radiobutton(i_main, text="Current Clamp", variable= test_type, value = 'cc', indicator = 0).pack(anchor='center')
 
-    tk.Label(i_main, text = "Change Parameters:").pack(pady=20)
+    tk.Label(i_main, text = "Parameters:").pack(pady=20)
 
-    b_time = tk.Button(i_main, text = 'Change Time Parameters', width=25, command = open_time_config)
-    b_param = tk.Button(i_main, text = 'Change Test Parameters', width=25, command = lambda: open_params(test_type.get()))
-    b_hh = tk.Button(i_main, text = 'Change Kinetics Parameters', width=25, command = open_hh)
+    b_time = tk.Button(i_main, text = 'View Time Parameters', width=25, command = open_time_config)
+    b_param = tk.Button(i_main, text = 'View Test Parameters', width=25, command = lambda: open_params(test_type.get()))
+    b_hh = tk.Button(i_main, text = 'View Kinetics Parameters', width=25, command = open_hh)
 
     b_time.pack()
     b_param.pack()
@@ -248,6 +245,7 @@ def inter_main():
     tk.Label(i_main, text = "Edits to parameters require restart to take effect.").pack(pady=20)
 
     tk.Button(i_main, text = 'Restart', width=25, command = restart).pack()
+    tk.Button(i_main, text = 'View Curves', width=25, command = curves).pack(pady=10)
     tk.Button(i_main, text = 'Run Simulation', width=25, command = lambda: run_sim(test_type.get())).pack()
 
     i_main.mainloop()
