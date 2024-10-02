@@ -1,4 +1,4 @@
-import numpy as np
+from numpy import *;
 
 from params import *
 
@@ -30,11 +30,11 @@ def get_a(sub, V):
     u = V-V_R;
     match sub:
         case "n":
-            a = 0.01*(10-u)/(np.exp(1-0.1*u)-1)
+            a = 0.01*(10-u)/(exp(1-0.1*u)-1)
         case "m": 
-            a = 0.1*(25-u)/(np.exp(2.5-0.1*u)-1)
+            a = 0.1*(25-u)/(exp(2.5-0.1*u)-1)
         case "h":
-            a = .07 * np.exp(-u/20)
+            a = .07*exp(-u/20)
         case _:        
             a = None
     return a
@@ -43,11 +43,11 @@ def get_b(sub, V):
     u = V-V_R;
     match sub:
         case "n":
-            b = .125 * np.exp(-u/80)
+            b = .125*exp(-u/80)
         case "m":
-            b = 4 * np.exp(-u/18)
+            b = 4*exp(-u/18)
         case "h":
-            b = 1/(np.exp(3-0.1*u)+1)
+            b = 1/(exp(3-0.1*u)+1)
         case _:        
             b = None
     return b
