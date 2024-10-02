@@ -3,31 +3,31 @@ from numpy import *;
 from params import *
 
 # kinetic equations based off of original HH paper
-# V in calculating a and b is assumed to be written as negative driving force, i.e. displacement of voltage 
+# V in calculating a and b is assumed to be written as negative driving force u, i.e. displacement of voltage 
 # V=(-P+70)
 
-def get_diff(var, sub, V):
-    inf = get_inf(sub, V)
-    tau = get_tau(sub, V)
+def get_diff(var, sub, v):
+    inf = get_inf(sub, v)
+    tau = get_tau(sub, v)
 
     return (inf - var) / tau
     
-def diff_inc(var, sub, V):
+def diff_inc(var, sub, v):
     dt = (1/T_DEF)
-    return var + (dt * (get_diff(var, sub, V)))
+    return var + (dt * (get_diff(var, sub, v)))
 
-def get_tau(sub, V):
-    a = get_a(sub, V)
-    b = get_b(sub, V)
+def get_tau(sub, v):
+    a = get_a(sub, v)
+    b = get_b(sub, v)
     return (1)/(b+a)
     
-def get_inf(sub, V):
-    a = get_a(sub, V)
-    b = get_b(sub, V)
+def get_inf(sub, v):
+    a = get_a(sub, v)
+    b = get_b(sub, v)
     return (a)/(b+a)
 
-def get_a(sub, V):
-    u = V-V_R;
+def get_a(sub, v):
+    u = v-V_R;
     match sub:
         case "n":
             a = 0.01*(10-u)/(exp(1-0.1*u)-1)
@@ -39,8 +39,8 @@ def get_a(sub, V):
             a = None
     return a
 
-def get_b(sub, V):
-    u = V-V_R;
+def get_b(sub, v):
+    u = v-V_R;
     match sub:
         case "n":
             b = .125*exp(-u/80)
