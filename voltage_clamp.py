@@ -1,13 +1,7 @@
 import matplotlib.pylab as plt
-import params
-import kinetics
-import importlib
 
-importlib.reload(params)
-importlib.reload(kinetics)
-
-from params import *
 from kinetics import *
+from params import *
 
 def voltage_clamp():
     
@@ -71,17 +65,17 @@ def voltage_clamp():
     fig, (ax1, ax2, ax3, ax4) = plt.subplots(4,1)
 
     ax1.plot(t, n_val)
-    ax1.set_title("n")
+    ax1.set_title("n^4")
     
     ax2.plot(t, m_val, color = "r", label="m")
     ax2.plot(t, h_val, color = "g", label="h")
-    ax2.set_title("m & h")
+    ax2.set_title("h & m^3")
 
     ax3.plot(t, na_val)
-    ax3.set_title("total sodium rate")
+    ax3.set_title("Total Sodium Conductance")
 
     ax4.plot(t, total_val)
-    ax4.set_title("total")
+    ax4.set_title("Total")
 
     #plt.legend()
     plt.tight_layout()
